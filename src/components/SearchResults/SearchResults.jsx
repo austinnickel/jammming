@@ -1,32 +1,19 @@
 import {useState} from 'react'
 
-const results = [
-    {
-        name: "Lemonade",
-        artist: "Beyonce",
-        album: "Lemonade",
-        id: "Lemonade-Beyonce"
-    },
 
-    {
-        name: "Ain't No Thief",
-        artist: "Viagra Boys",
-        album: "Cave World",
-        id: "Ain'tNoThief-ViagraBoys"
-    },
-
-    {
-        name: "For Whom the Bell Tolls",
-        artist: "Metallica",
-        album: "Ride the Lightning",
-        id: "ForWhomtheBellTolls-Metallica"
-    }
-]
-
-
-
-function SearchResults(result) {
-const [result, setResult] = useState(null);
-}
+function SearchResults({initialResults}) {
+const [result, setResult] = useState(initialResults);
+   return (
+    <div>
+        { results.map(track => (
+            <div key={track.id}>
+                <p>Name: {track.name}</p>
+                <p>Artist: {track.artist}</p>
+                <p>Album: {track.album}</p>
+            </div>
+            ))};
+    </div>
+   )
+};
 
 export default SearchResults;

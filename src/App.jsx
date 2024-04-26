@@ -4,10 +4,32 @@ import './App.css'
 
 function App() {
   
+  const initialResults = [
+    {
+        name: "Lemonade",
+        artist: "Beyonce",
+        album: "Lemonade",
+        id: "Lemonade-Beyonce"
+    },
+
+    {
+        name: "Ain't No Thief",
+        artist: "Viagra Boys",
+        album: "Cave World",
+        id: "Ain'tNoThief-ViagraBoys"
+    },
+
+    {
+        name: "For Whom the Bell Tolls",
+        artist: "Metallica",
+        album: "Ride the Lightning",
+        id: "ForWhomtheBellTolls-Metallica"
+    }
+]
 
   return (
     <>
-    <SearchResults results={result} />  
+    <SearchResults initialResults={initialResults} />  
     </>
   )
 }
