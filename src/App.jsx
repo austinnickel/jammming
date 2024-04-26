@@ -62,12 +62,16 @@ const addTrackToPlaylist = (track) => {
   if(!isDuplicate) {
     setTracklist(prevTracklist => [...prevTracklist, track]);
   }
-}
+};
+
+const removeTrackFromPlaylist = (trackIdToRemove) => {
+  setTracklist(prevTracklist => prevTracklist.filter(track => track.id !== trackIdToRemove));
+};
 
   return (
     <>
     <Playlist name={mockPlaylist.name} />
-    <Tracklist tracks={mockPlaylist.tracks} />
+    <Tracklist tracks={mockPlaylist.tracks} onRemoveTrack={removeTrackFromPlaylist} />
     <SearchResults initialResults={initialResults} onAddTrack={addTrackToPlaylist} />  
     </>
   )
