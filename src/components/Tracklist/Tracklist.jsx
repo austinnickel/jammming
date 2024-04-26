@@ -1,7 +1,7 @@
-import {useState} from 'react';
+
 
 function Tracklist({tracks}) {
-    const [tracklist, setTracklist] = useState(tracks);
+   
 
     return (
         <div>

@@ -1,7 +1,7 @@
-import {useState} from 'react';
+
 
 function Playlist({name}) {
-const [playListName, setPlayListName] =useState(name);
+
 
 return (
     <div>

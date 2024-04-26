@@ -1,8 +1,6 @@
-import {useState} from 'react'
 
+function SearchResults({initialResults, onAddTrack}) {
 
-function SearchResults({initialResults}) {
-const [result, setResult] = useState(initialResults);
    return (
     <div>
         { results.map(track => (
@@ -10,6 +8,7 @@ const [result, setResult] = useState(initialResults);
                 <p>Name: {track.name}</p>
                 <p>Artist: {track.artist}</p>
                 <p>Album: {track.album}</p>
+                <button onClick={() => onAddTrack(track)}>+</button>
             </div>
             ))};
     </div>

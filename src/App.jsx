@@ -5,6 +5,9 @@ import Tracklist from './components/Tracklist/Tracklist';
 import './App.css'
 
 function App() {
+  const [tracklist, setTracklist] = useState(mockPlaylist.tracks);
+
+  
   
   const initialResults = [
     {
@@ -54,11 +57,18 @@ const mockPlaylist = {
   ]
 };
 
+const addTrackToPlaylist = (track) => {
+  const isDuplicate = tracklist.some(track => track.id === track.id);
+  if(!isDuplicate) {
+    setTracklist(prevTracklist => [...prevTracklist, track]);
+  }
+}
+
   return (
     <>
     <Playlist name={mockPlaylist.name} />
     <Tracklist tracks={mockPlaylist.tracks} />
-    <SearchResults initialResults={initialResults} />  
+    <SearchResults initialResults={initialResults} onAddTrack={addTrackToPlaylist} />  
     </>
   )
 }
