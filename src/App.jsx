@@ -6,6 +6,7 @@ import './App.css'
 
 function App() {
   const [tracklist, setTracklist] = useState(mockPlaylist.tracks);
+  const [playlistName, setPlaylistName] = useState(mockPlaylist.name);
 
   
   
@@ -68,9 +69,13 @@ const removeTrackFromPlaylist = (trackIdToRemove) => {
   setTracklist(prevTracklist => prevTracklist.filter(track => track.id !== trackIdToRemove));
 };
 
+const changePlaylistName = (event) => {
+  setPlaylistName(event.target.value);
+};
+
   return (
     <>
-    <Playlist name={mockPlaylist.name} />
+    <Playlist onChange={changePlaylistName} />
     <Tracklist tracks={mockPlaylist.tracks} onRemoveTrack={removeTrackFromPlaylist} />
     <SearchResults initialResults={initialResults} onAddTrack={addTrackToPlaylist} />  
     </>

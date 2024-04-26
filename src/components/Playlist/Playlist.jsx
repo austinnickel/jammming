@@ -1,11 +1,17 @@
 
 
-function Playlist({name}) {
+function Playlist(value, onChange) {
 
 
 return (
     <div>
-        <h2>Playlist Name: {name}</h2>
+        
+        <input type="text"  
+        placeholder="Playlist Name"
+        value={value}
+        onChange={onChange}
+        />
+       
     </div>
 )
 }
