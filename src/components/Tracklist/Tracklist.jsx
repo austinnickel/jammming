@@ -1,6 +1,6 @@
 
 
-function Tracklist({tracks}) {
+function Tracklist({tracks, onRemoveTrack}) {
    
 
     return (

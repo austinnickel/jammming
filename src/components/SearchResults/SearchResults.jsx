@@ -3,14 +3,15 @@ function SearchResults({initialResults, onAddTrack}) {
 
    return (
     <div>
-        { results.map(track => (
-            <div key={track.id}>
-                <p>Name: {track.name}</p>
-                <p>Artist: {track.artist}</p>
-                <p>Album: {track.album}</p>
-                <button onClick={() => onAddTrack(track)}>+</button>
-            </div>
+        <h2>Search Results</h2>
+        <ul>
+        { initialResults.map((result) => (
+            <li key={result.id}>
+                {result.name} {result.artist} {result.album}
+                <button onClick={() => onAddTrack(result)}>+</button>
+                </li>
             ))};
+        </ul>
     </div>
    )
 };

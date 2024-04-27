@@ -4,12 +4,9 @@ import Playlist from './components/Playlist/Playlist';
 import Tracklist from './components/Tracklist/Tracklist';
 import './App.css'
 
-function App() {
-  const [tracklist, setTracklist] = useState(mockPlaylist.tracks);
-  const [playlistName, setPlaylistName] = useState(mockPlaylist.name);
 
-  
-  
+function App() {
+
   const initialResults = [
     {
         name: "Lemonade",
@@ -17,23 +14,23 @@ function App() {
         album: "Lemonade",
         id: 1
     },
-
+  
     {
         name: "Ain't No Thief",
         artist: "Viagra Boys",
         album: "Cave World",
         id: 2
     },
-
+  
     {
         name: "For Whom the Bell Tolls",
         artist: "Metallica",
         album: "Ride the Lightning",
         id: 3
     }
-];
-
-const mockPlaylist = {
+  ];
+  
+  const mockPlaylist = {
   name: "My New Playlist", 
   tracks: [
     {
@@ -57,15 +54,17 @@ const mockPlaylist = {
       album: "Purple Rain",
       uri: "spotify:track:51H2y6YrNNXcy3dfc3qSbA?si=b98f0cef3fb343f0"
     }
-
+  
   ]
-};
+  };
+  
+  const [tracklist, setTracklist] = useState(mockPlaylist.tracks);
+  const [playlistName, setPlaylistName] = useState(mockPlaylist.name);
 
-
-const addTrackToPlaylist = (track) => {
-  const isDuplicate = tracklist.some(track => track.id === track.id);
+const addTrackToPlaylist = (result) => {
+  const isDuplicate = tracklist.some(track => track.id === result.id);
   if(!isDuplicate) {
-    setTracklist(prevTracklist => [...prevTracklist, track]);
+    setTracklist(prevTracklist => [...prevTracklist, result]);
   }
 };
 
