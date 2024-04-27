@@ -9,12 +9,12 @@ function Tracklist({tracks, onRemoveTrack}) {
               {tracks.map(track => (
                 <li key={track.id}>
                     {track.name} - {track.artist} - {track.album}
-                    <button onClick={()=> onRemoveTrack(track)}>-</button>
+                    <button onClick={()=> onRemoveTrack(track.id)}>-</button>
                 </li>
-              ))};
+              ))}
             </ul>
         </div>
-    )
+    );
 };
 
 export default Tracklist;

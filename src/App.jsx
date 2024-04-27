@@ -58,8 +58,8 @@ function App() {
   ]
   };
   
-  const [tracklist, setTracklist] = useState(mockPlaylist.tracks);
-  const [playlistName, setPlaylistName] = useState(mockPlaylist.name);
+const [tracklist, setTracklist] = useState(mockPlaylist.tracks);
+const [playlistName, setPlaylistName] = useState(mockPlaylist.name);
 
 const addTrackToPlaylist = (result) => {
   const isDuplicate = tracklist.some(track => track.id === result.id);
@@ -69,7 +69,9 @@ const addTrackToPlaylist = (result) => {
 };
 
 const removeTrackFromPlaylist = (trackIdToRemove) => {
-  setTracklist(prevTracklist => prevTracklist.filter(track => track.id !== trackIdToRemove));
+  
+  setTracklist(prevTracklist =>  prevTracklist.filter(track => track.id !== trackIdToRemove));
+
 };
 
 const changePlaylistName = (event) => {
@@ -86,7 +88,7 @@ const savePlaylistAndReset = () => {
     <>
     <SearchResults initialResults={initialResults} onAddTrack={addTrackToPlaylist} />
     <Playlist onChange={changePlaylistName} />
-    <Tracklist tracks={mockPlaylist.tracks} onRemoveTrack={removeTrackFromPlaylist} />
+    <Tracklist key={JSON.stringify(tracklist)} tracks={tracklist} onRemoveTrack={removeTrackFromPlaylist} />
     <button onClick={savePlaylistAndReset}>Save</button>
     </>
   )
