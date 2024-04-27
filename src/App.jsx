@@ -40,23 +40,27 @@ const mockPlaylist = {
       id: 4,
       name: "Damnit",
       artist: "Blink-182",
-      album: "Dude Ranch"
+      album: "Dude Ranch",
+      uri: "spotify:track:6WkSUgo1VdpzgtiXKlFPcY?si=1b16b3e1434e4a83"
     },
     {
       id: 5,
       name: "Stairway to Heaven",
       artist: "Led Zeppelin",
-      album: "Zozo"
+      album: "Zozo",
+      uri: "spotify:track:5CQ30WqJwcep0pYcV4AMNc?si=ee7ceee078bd4eaf"
     },
     {
       id: 6,
       name: "When the Doves Cry",
       artist: "Prince",
-      album: "Purple Rain"
+      album: "Purple Rain",
+      uri: "spotify:track:51H2y6YrNNXcy3dfc3qSbA?si=b98f0cef3fb343f0"
     }
 
   ]
 };
+
 
 const addTrackToPlaylist = (track) => {
   const isDuplicate = tracklist.some(track => track.id === track.id);
@@ -73,11 +77,18 @@ const changePlaylistName = (event) => {
   setPlaylistName(event.target.value);
 };
 
+const savePlaylistAndReset = () => {
+  console.log(tracklist.map(track => track.uri));
+  setTracklist([]);
+  setPlaylistName('');
+};
+
   return (
     <>
+    <SearchResults initialResults={initialResults} onAddTrack={addTrackToPlaylist} />
     <Playlist onChange={changePlaylistName} />
     <Tracklist tracks={mockPlaylist.tracks} onRemoveTrack={removeTrackFromPlaylist} />
-    <SearchResults initialResults={initialResults} onAddTrack={addTrackToPlaylist} />  
+    <button onClick={savePlaylistAndReset}>Save</button>
     </>
   )
 }
