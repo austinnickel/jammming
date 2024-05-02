@@ -84,6 +84,60 @@ const savePlaylistAndReset = () => {
   setPlaylistName('');
 };
 
+const client_id = 'd90891e3a05449b5992d7c531d9a8cc1';
+const redirect_uri = 'http://localhost:5173/';
+
+function generateRandomString(length) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
+}  
+
+const state = generateRandomString(16);
+
+
+const scope ="user-read-private playlist-modify-private playlist-modify-public";
+
+let url = 'https://accounts.spotify.com/authorize';
+url += '?response_type=token';
+url += '&client_id=' + encodeURIComponent(client_id);
+url += '&scope=' + encodeURIComponent(scope);
+url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
+url += '&state=' + encodeURIComponent(state);
+
+const params = new URLSearchParams(window.location.hash.substring(1));
+const accessToken = params.get('access_token');
+const tokenType = params.get('token_type');
+const expiresIn = parseInt(params.get('expires_in'));
+
+if(accessToken) {
+
+localStorage.setItem('access_token', accessToken);
+localStorage.setItem('token_type', tokenType);
+localStorage.setItem('expires_at', Date.now() + expiresIn * 1000);
+
+window.history.replaceState({}, document.title, window.location.pathname);
+
+} else {
+  alert("Error: Access denied. Please log in and grant access to your Spotify account.");
+};
+
+const isTokenExpired = () => {
+  const expiresAt = localStorage.getItem('expires_at');
+  return Date.now() > expiresAt;
+
+};
+
+const handleTokenExpiration = () => {
+  if(isTokenExpired()) {
+    alert("Your Spotify access has expired. Please login again.");
+    window.location = 'https://accounts.spotify.com/authorize?client_id=d90891e3a05449b5992d7c531d9a8cc1&redirect_uri=http://localhost:5173/&scope=user-read-private,playlist-modify-private,playlist-modify-public&response_type=token';
+  }
+};
+
+useEffect(() => {
+  handleTokenExpiration();
+},[]);
+
   return (
     <>
     <SearchResults initialResults={initialResults} onAddTrack={addTrackToPlaylist} />
