@@ -1,20 +1,21 @@
+import Track from "../Track/Track";
 
-
-function Tracklist({tracks, onRemoveTrack}) {
-   
-
-    return (
-        <div>
-            <ul>
-              {tracks.map(track => (
-                <li key={track.id}>
-                    {track.name} - {track.artist} - {track.album}
-                    <button onClick={()=> onRemoveTrack(track.id)}>-</button>
-                </li>
-              ))}
-            </ul>
-        </div>
-    );
+const TrackList = (props) => {
+  return (
+    <div className="TrackList">
+      {props.tracks.map((track) => {
+        return (
+          <Track
+            track={track}
+            key={track.id}
+            onAdd={props.onAdd}
+            isRemoval={props.isRemoval}
+            onRemove={props.onRemove}
+          />
+        );
+      })}
+    </div>
+  );
 };
 
-export default Tracklist;
+export default TrackList;
