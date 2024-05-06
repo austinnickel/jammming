@@ -15,7 +15,7 @@ function App() {
     SpotifyAccessToken.search(term).then(setSearchResults);
   }, []);
 
-  const addTrackToPlaylist = useCallback((track) => {
+  const addTrack = useCallback((track) => {
     if (playlistTracks.some((savedTrack) => savedTrack.id === track.id))
       return;
     setPlaylistTracks((prevTracks) => [...prevTracks, track]);
@@ -23,7 +23,7 @@ function App() {
   [playlistTracks]
 );
 
-  const removeTrackFromPlaylist = useCallback((track) => {
+  const removeTrack = useCallback((track) => {
   
   setPlaylistTracks((prevTracklist) =>  prevTracklist.filter((currentTrack) => currentTrack.id !== track.id));
 
