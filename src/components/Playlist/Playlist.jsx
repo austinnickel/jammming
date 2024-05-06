@@ -1,4 +1,4 @@
-import { useCallback, useCallback } from 'react';
+import { useCallback} from 'react';
 import Tracklist from '../Tracklist/Tracklist';
 
 const Playlist = (props) => {
