@@ -1,19 +1,14 @@
+import Tracklist from '../Tracklist/Tracklist';
 
-function SearchResults({initialResults, onAddTrack}) {
+const SearchResults = (props) => {
 
    return (
-    <div>
+    <div className="SearchResults">
         <h2>Search Results</h2>
-        <ul>
-        { initialResults.map((result) => (
-            <li key={result.id}>
-                {result.name} {result.artist} {result.album}
-                <button onClick={() => onAddTrack(result)}>+</button>
-                </li>
-            ))};
-        </ul>
+      <Tracklist tracks={props.searchResults} onAdd={props.onAdd} />
+        
     </div>
-   )
+   );
 };
 
 export default SearchResults;
