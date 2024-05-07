@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import SearchBar from './components/SearchBar/SearchBar'
 import SearchResults from './components/SearchResults/SearchResults';
 import Playlist from './components/Playlist/Playlist';
-import SpotifyAccessToken from './components/SpotifyAccessToken/SpotifyAccessToken';
+import SpotifyAccessToken from './components/Utilities/Spotify';
 import './App.css'
 
 
